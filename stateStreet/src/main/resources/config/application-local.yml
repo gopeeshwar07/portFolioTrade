@@ -1,0 +1,32 @@
+
+# ===================================================================
+# Spring Boot properties
+# ===================================================================
+logging:
+    level:
+        ROOT: DEBUG
+
+
+# ===================================================================
+# EMAIL properties
+# ===================================================================
+#        
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: gopeeshwar.sg@gmail.com
+    password: 
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: false
+            required: false
+          auth: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+
+portfolio:        
+    maxLimit : 1000
