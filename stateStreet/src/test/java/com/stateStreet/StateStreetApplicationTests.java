@@ -41,15 +41,10 @@ class StateStreetApplicationTests {
 
 	@Mock
 	private EmailService emailService;
-	@Test
-	public void testEmailNotification() {
-		Mockito.doNothing().when(emailService).sendNotificationEmail();
-		//portfolioService.acceptTrades(trades);
-		// Assertions.assertThatThrownBy(()->payrollSFTPFileTransferResource.generateFileFromTransformedData(response)).isInstanceOf(Exception.class);
-	}
-
+	
 	@Test
 	public void calculateNetPosition() {
+		Mockito.doNothing().when(emailService).sendNotificationEmail();
 		TradeDTO trade1 = new TradeDTO("Td1", "Buy", 100, 1.3);
 		TradeDTO trade2 = new TradeDTO("Td1", "Sale", 50, 1.5);
 		TradeDTO trade3 = new TradeDTO("Td1", "Buy", 200, 10.6);
@@ -59,4 +54,13 @@ class StateStreetApplicationTests {
 		Assertions.assertThat(portfolioService.calculateNetPosition(trades)).isEqualTo(250);
 
 	}
+	
+	@Test
+	public void testEmailNotification() {
+		Mockito.doNothing().when(emailService).sendNotificationEmail();
+		portfolioService.acceptTrades(trades);
+		// Assertions.assertThatThrownBy(()->payrollSFTPFileTransferResource.generateFileFromTransformedData(response)).isInstanceOf(Exception.class);
+	}
+
+	
 }
